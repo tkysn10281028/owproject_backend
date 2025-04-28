@@ -1,4 +1,4 @@
-package com.oysterworld.portfolio.owproject_backend;
+package com.oysterworld.portfolio.owproject_backend.app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
