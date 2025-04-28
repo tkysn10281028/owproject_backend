@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.oysterworld.portfolio.owproject_backend.database.mapper.BlogMapper">
+    <select id="getContentByTitle" parameterType="string"
+            resultType="com.oysterworld.portfolio.owproject_backend.database.model.BlogModel">
+        <![CDATA[
+            SELECT
+                id,
+                title,
+                content,
+                inner_id
+            FROM
+                BLOG
+            WHERE
+                title LIKE CONCAT('%', #{title}, '%')
+        ]]>
+    </select>
+
+    <select id="getContentById" parameterType="string"
+            resultType="com.oysterworld.portfolio.owproject_backend.database.model.BlogModel">
+        <![CDATA[
+            SELECT
+                id,
+                title,
+                content,
+                inner_id
+            FROM
+                BLOG
+            WHERE
+                id = #{id}
+        ]]>
+    </select>
+
+    <select id="getAllContents"
+            resultType="com.oysterworld.portfolio.owproject_backend.database.model.BlogModel">
+        <![CDATA[
+            SELECT
+                id,
+                title,
+                content,
+                inner_id
+            FROM
+                BLOG
+        ]]>
+    </select>
+
+    <insert id="postContent"
+            parameterType="com.oysterworld.portfolio.owproject_backend.database.model.BlogModel">
+        <![CDATA[
+            INSERT INTO BLOG (
+                id,
+                title,
+                content,
+                inner_id
+            ) VALUES (
+                #{id},
+                #{title},
+                #{content},
+                #{innerId}
+            )
+        ]]>
+    </insert>
+</mapper>

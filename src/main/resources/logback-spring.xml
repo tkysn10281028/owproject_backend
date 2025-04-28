@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+<springProfile name="docker,dev">
+  <logger name="org.apache.ibatis.logging.jdbc.BaseJdbcLogger" level="DEBUG" additivity="false">
+    <appender-ref ref="stdout" />
+  </logger>
+</springProfile>
+<springProfile name="!docker &amp; !dev">
+  <logger name="org.apache.ibatis.logging.jdbc.BaseJdbcLogger" level="WARN" />
+</springProfile>
+<property name="LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %-60.60logger - %msg%n" />
+    <property name="LOG_DIR" value="./app/logs" />
+    <appender name="infoFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_DIR}/application_info.log</file>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>error</level>
+            <onMatch>DENY</onMatch>
+        </filter>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>warn</level>
+            <onMatch>DENY</onMatch>
+        </filter>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_DIR}/application_info.%d{yyyy-MM-dd}.zip</fileNamePattern>
+            <maxHistory>14</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+    <appender name="errorFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_DIR}/application_error.log</file>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>warn</level>
+        </filter>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_DIR}/application_error.%d{yyyy-MM-dd}.zip</fileNamePattern>
+            <maxHistory>14</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+    <appender name="stdout"
+        class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+<springProfile name="!dev">
+	<root level="info">
+		<appender-ref ref="stdout" />
+		<appender-ref ref="infoFile" />
+		<appender-ref ref="errorFile" />
+	</root>
+</springProfile>
+	<springProfile name="dev">
+		<root level="info">
+			<appender-ref ref="stdout" />
+		</root>
+	</springProfile>
+    <logger name="org.springframework" level="WARN" />
+    <logger name="com.oysterworld" level="DEBUG" />
+</configuration>
