@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.oysterworld.portfolio.owproject_backend.database.mapper.BlogMapper">
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.oysterworld.portfolio.owproject_backend.app.database.blog.BlogMapper">
     <select id="getContentByTitle" parameterType="string"
-            resultType="com.oysterworld.portfolio.owproject_backend.app.business.blog.Blog$Model">
+            resultType="com.oysterworld.portfolio.owproject_backend.app.database.blog.BlogModel">
         <![CDATA[
             SELECT
                 id,
@@ -18,7 +18,7 @@
     </select>
 
     <select id="getContentById" parameterType="string"
-            resultType="com.oysterworld.portfolio.owproject_backend.app.business.blog.Blog$Model">
+            resultType="com.oysterworld.portfolio.owproject_backend.app.database.blog.BlogModel">
         <![CDATA[
             SELECT
                 id,
@@ -33,7 +33,7 @@
     </select>
 
     <select id="getAllContents"
-            resultType="com.oysterworld.portfolio.owproject_backend.app.business.blog.Blog$Model">
+            resultType="com.oysterworld.portfolio.owproject_backend.app.database.blog.BlogModel">
         <![CDATA[
             SELECT
                 id,
@@ -46,7 +46,7 @@
     </select>
 
     <insert id="postContent"
-            parameterType="com.oysterworld.portfolio.owproject_backend.app.business.blog.Blog$Model">
+            parameterType="com.oysterworld.portfolio.owproject_backend.app.database.blog.BlogModel">
         <![CDATA[
             INSERT INTO BLOG (
                 id,

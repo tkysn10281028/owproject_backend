@@ -1,15 +1,13 @@
-package com.oysterworld.portfolio.owproject_backend.app.service.blog;
+package com.oysterworld.portfolio.owproject_backend.app.business.blog;
+
+import com.oysterworld.portfolio.owproject_backend.exception.OwBadRequestException;
+import com.oysterworld.portfolio.owproject_backend.exception.OwInternalServerErrorException;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
-
-import com.oysterworld.portfolio.owproject_backend.app.business.blog.Blog;
-import com.oysterworld.portfolio.owproject_backend.exception.OwBadRequestException;
-import com.oysterworld.portfolio.owproject_backend.exception.OwInternalServerErrorException;
-
 @Service
-public class BlogValidationService {
+public class BlogValidationLogic {
     public void validateBlankNull(String val) {
         if (val == null || val.trim().isEmpty()) {
             throw new OwBadRequestException("input parameter is empty.",
