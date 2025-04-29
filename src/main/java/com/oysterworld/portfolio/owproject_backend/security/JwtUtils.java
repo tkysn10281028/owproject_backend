@@ -6,7 +6,6 @@ import java.util.Date;
 
 import org.springframework.stereotype.Component;
 
-import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -38,7 +37,7 @@ public class JwtUtils {
      * トークンからメールアドレス（subject）を取得する
      */
     public static String getUserEmailAddress(String token) {
-        Claims claims = Jwts.parserBuilder()
+        var claims = Jwts.parserBuilder()
                 .setSigningKey(KEY)
                 .build()
                 .parseClaimsJws(token)

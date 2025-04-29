@@ -17,7 +17,7 @@ import jakarta.servlet.http.HttpSession;
 public class JwtRetrieveController {
     @GetMapping("/jwt")
     public ResponseEntity<Map<String, String>> jwtRetrive(HttpSession session) {
-        String jwt = RedisUtil.get("jwt");
+        var jwt = RedisUtil.get("jwt");
         if(jwt != null) {
             return ResponseEntity.ok(Map.of("jwt", jwt));
         }

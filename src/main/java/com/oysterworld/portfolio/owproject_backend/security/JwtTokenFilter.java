@@ -8,7 +8,6 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
@@ -40,7 +39,7 @@ public class JwtTokenFilter extends OncePerRequestFilter {
             request.getSession().invalidate();
             request.getSession(true);
         }
-        String jwt = (String) RedisUtil.get("jwt");
+        var jwt = (String) RedisUtil.get("jwt");
         if (jwt != null && JwtUtils.validate(jwt)) {
             log.debug("Valid JWT Token:　{}", jwt);
             doAuthenticate(request, response, filterChain, jwt);
@@ -72,8 +71,8 @@ public class JwtTokenFilter extends OncePerRequestFilter {
      */
     private void doAuthenticate(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain,
             String token) throws ServletException, IOException {
-        UserDetails userDetails = detailsService.loadUserByUsername(JwtUtils.getUserEmailAddress(token));
-        UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails, null,
+        var userDetails = detailsService.loadUserByUsername(JwtUtils.getUserEmailAddress(token));
+        var authentication = new UsernamePasswordAuthenticationToken(userDetails, null,
                 userDetails.getAuthorities());
         authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
         SecurityContextHolder.getContext().setAuthentication(authentication);

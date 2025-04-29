@@ -1,7 +1,6 @@
 package com.oysterworld.portfolio.owproject_backend.common;
 
 import java.util.Arrays;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -19,10 +18,10 @@ public class CorsConfig {
     
     @Bean
     public CorsFilter corsFilter() {
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        CorsConfiguration config = new CorsConfiguration();
+        var source = new UrlBasedCorsConfigurationSource();
+        var config = new CorsConfiguration();
 
-        List<String> allowedOrigins = Arrays.asList(frontendServers.split(","));
+        var allowedOrigins = Arrays.asList(frontendServers.split(","));
 
         config.setAllowedOrigins(allowedOrigins);
         config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));

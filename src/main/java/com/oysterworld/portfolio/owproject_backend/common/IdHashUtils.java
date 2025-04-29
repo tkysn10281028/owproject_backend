@@ -7,8 +7,8 @@ import java.security.NoSuchAlgorithmException;
 public class IdHashUtils {
     public static String hashId(String id) {
         try {
-            MessageDigest digest = MessageDigest.getInstance("SHA-256");
-            byte[] hash = digest.digest(id.getBytes(StandardCharsets.UTF_8));
+            var digest = MessageDigest.getInstance("SHA-256");
+            var hash = digest.digest(id.getBytes(StandardCharsets.UTF_8));
             return bytesToHex(hash);
         } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException("No Algorhithm for Hash -> Error hashing user ID", e);
@@ -16,9 +16,9 @@ public class IdHashUtils {
     }
 
     private static String bytesToHex(byte[] hash) {
-        StringBuilder hexString = new StringBuilder();
+        var hexString = new StringBuilder();
         for (byte b : hash) {
-            String hex = Integer.toHexString(0xff & b);
+            var hex = Integer.toHexString(0xff & b);
             if (hex.length() == 1) {
                 hexString.append('0');
             }
