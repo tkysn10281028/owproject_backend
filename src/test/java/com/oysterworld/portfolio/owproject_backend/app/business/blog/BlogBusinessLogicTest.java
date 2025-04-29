@@ -1,6 +1,5 @@
 package com.oysterworld.portfolio.owproject_backend.app.business.blog;
 
-import com.oysterworld.portfolio.owproject_backend.app.database.blog.BlogMapper;
 import com.oysterworld.portfolio.owproject_backend.common.IdHashUtils;
 import com.oysterworld.portfolio.owproject_backend.exception.OwBadRequestException;
 import com.oysterworld.portfolio.owproject_backend.exception.OwInternalServerErrorException;
@@ -27,7 +26,7 @@ import static org.mockito.Mockito.mockStatic;
 public class BlogBusinessLogicTest {
     @Autowired
     public BlogBusinessLogic blogBusinessLogic;
-    
+
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
