@@ -29,7 +29,7 @@ public class BlogBusinessLogic {
         return this.blogService.getAllContents();
     }
 
-    public Blog.Response postContent(Blog blog) {
-        return this.blogService.postContent(blog);
+    public Blog.Response postContent(Blog.Request req) {
+        return this.blogService.postContent(req);
     }
 }

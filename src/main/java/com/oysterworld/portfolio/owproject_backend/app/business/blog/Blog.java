@@ -17,7 +17,9 @@ public class Blog extends BaseDomain {
     private String content;
     private String innerId;
 
-    /** データベース接続用Model */
+    /**
+     * データベース接続用Model
+     */
     @Getter
     @AllArgsConstructor
     public static class Model {
@@ -27,7 +29,9 @@ public class Blog extends BaseDomain {
         private String innerId;
     }
 
-    /** リクエスト受け取り用DTO */
+    /**
+     * リクエスト受け取り用DTO
+     */
     @Getter
     @AllArgsConstructor
     public static class Request {
@@ -35,7 +39,9 @@ public class Blog extends BaseDomain {
         private String content;
     }
 
-    /** レスポンス返却用DTO */
+    /**
+     * レスポンス返却用DTO
+     */
     @Getter
     @AllArgsConstructor
     public static class Response {
@@ -44,7 +50,9 @@ public class Blog extends BaseDomain {
         private String content;
     }
 
-    /**  変換用メソッド  */
+    /**
+     * 変換用メソッド
+     */
     public Model toModel() {
         return new Model(id, title, content, innerId);
     }
@@ -53,14 +61,11 @@ public class Blog extends BaseDomain {
         return new Response(id, title, content);
     }
 
-    public static Blog fromModel(Model model) {
-        return new Blog(model.id, model.title, model.content, model.innerId);
+    public Request toRequest() {
+        return new Request(title, content);
     }
 
-    public static Blog fromRequest(Request req) {
-        var blog = new Blog();
-        blog.setTitle(req.title);
-        blog.setContent(req.content);
-        return blog;
+    public static Blog fromModel(Model model) {
+        return new Blog(model.id, model.title, model.content, model.innerId);
     }
 }

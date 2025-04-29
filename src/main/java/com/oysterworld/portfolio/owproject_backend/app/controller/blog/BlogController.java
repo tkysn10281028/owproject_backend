@@ -50,6 +50,6 @@ public class BlogController {
     public void postContent(@RequestBody Blog.Request req) {
         this.handler.run((blog) -> {
             return blogBusinessLogic.postContent(blog);
-        }, Blog.fromRequest(req));
+        }, req);
     }
 }

@@ -46,7 +46,7 @@ public class BlogService {
                 .collect(Collectors.toList());
     }
 
-    public Blog.Response postContent(Blog blogFromReq) {
+    public Blog.Response postContent(Blog.Request blogFromReq) {
         this.blogValidationService.validateBlankNull(blogFromReq.getTitle());
         var blogs = this.blogMapper.getAllContents().stream()
                 .map(Blog::fromModel)
