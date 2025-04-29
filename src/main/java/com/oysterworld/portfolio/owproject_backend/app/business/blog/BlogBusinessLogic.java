@@ -1,14 +1,12 @@
 package com.oysterworld.portfolio.owproject_backend.app.business.blog;
 
 import com.oysterworld.portfolio.owproject_backend.app.database.blog.BlogDatabaseLogic;
-import com.oysterworld.portfolio.owproject_backend.app.database.blog.BlogMapper;
 import com.oysterworld.portfolio.owproject_backend.common.IdHashUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class BlogBusinessLogic {

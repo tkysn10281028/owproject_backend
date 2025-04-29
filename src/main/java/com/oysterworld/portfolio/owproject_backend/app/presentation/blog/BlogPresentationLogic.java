@@ -2,7 +2,6 @@ package com.oysterworld.portfolio.owproject_backend.app.presentation.blog;
 
 import com.oysterworld.portfolio.owproject_backend.app.business.blog.Blog;
 import com.oysterworld.portfolio.owproject_backend.app.business.blog.BlogBusinessLogic;
-import com.oysterworld.portfolio.owproject_backend.app.database.blog.BlogMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

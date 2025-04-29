@@ -1,7 +1,6 @@
 package com.oysterworld.portfolio.owproject_backend.app.database.blog;
 
 import com.oysterworld.portfolio.owproject_backend.app.business.blog.Blog;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

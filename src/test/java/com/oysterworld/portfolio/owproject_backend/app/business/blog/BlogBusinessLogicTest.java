@@ -27,10 +27,7 @@ import static org.mockito.Mockito.mockStatic;
 public class BlogBusinessLogicTest {
     @Autowired
     public BlogBusinessLogic blogBusinessLogic;
-
-    @Autowired
-    public BlogMapper mapper;
-
+    
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
