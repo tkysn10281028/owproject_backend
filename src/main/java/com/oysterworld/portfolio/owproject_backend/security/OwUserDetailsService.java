@@ -13,7 +13,7 @@ public class OwUserDetailsService implements UserDetailsService {
     
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        UserDetails user = User.builder()
+        var user = User.builder()
                 .username(username)
                 .password("{noop}dummy")
                 .roles(username.equals(adminEmail) ? "ADMIN" : "USER")

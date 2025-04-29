@@ -13,7 +13,7 @@ public class OwOidcUserService extends OidcUserService {
 
     @Override
     public OidcUser loadUser(OidcUserRequest userRequest) throws OAuth2AuthenticationException {
-        OidcUser user = super.loadUser(userRequest);
+        var user = super.loadUser(userRequest);
 
 //        String email = user.getEmail();
 //        userBusinessLogic.registUser(email);
