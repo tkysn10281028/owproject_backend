@@ -42,8 +42,6 @@ public class SecurityConfig {
                         .requestMatchers("/api/v1/user/**").hasAnyRole("ADMIN")
                         .anyRequest().authenticated())
                 .oauth2Login(oauth -> oauth
-                        .userInfoEndpoint(userInfo -> userInfo
-                                .oidcUserService(customOidcUserService()))
                         .successHandler(loginSuccessHandler())
                         .failureUrl(oauthFailureUrl))
                  .exceptionHandling(exception -> exception
@@ -64,11 +62,6 @@ public class SecurityConfig {
         var source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", config);
         return source;
-    }
-
-    @Bean
-    public OidcUserService customOidcUserService() {
-        return new OwOidcUserService();
     }
 
     @Bean
