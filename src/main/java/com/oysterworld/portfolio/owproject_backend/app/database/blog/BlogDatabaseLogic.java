@@ -1,6 +1,7 @@
 package com.oysterworld.portfolio.owproject_backend.app.database.blog;
 
 import com.oysterworld.portfolio.owproject_backend.app.business.blog.Blog;
+import com.oysterworld.portfolio.owproject_backend.common.DozerMapperUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,11 +43,10 @@ public class BlogDatabaseLogic {
     }
 
     public Blog fromModel(BlogModel blogModel) {
-        return new Blog(blogModel.getId(), blogModel.getTitle(),
-                blogModel.getContent(), blogModel.getInnerId());
+        return DozerMapperUtil.map(blogModel, Blog.class);
     }
 
     public BlogModel toModel(Blog blog) {
-        return new BlogModel(blog.getId(), blog.getTitle(), blog.getContent(), blog.getInnerId());
+        return DozerMapperUtil.map(blog,BlogModel.class);
     }
 }
